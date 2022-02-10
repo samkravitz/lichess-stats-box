@@ -1,0 +1,21 @@
+name: Update Lichess Stats Gist
+on:
+    workflow_dispatch:
+    schedule:
+        - cron: '0 */12 * * *'
+    push:
+        branches: main
+jobs:
+    run:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+            - run: npx lichess-stats-box
+              env:
+                  githubToken: ${{ secrets.githubToken }} # Do not edit, defined in secrets
+
+                  # Edit the following environment variables
+                  gistId: 2b0e06dcac2e71ca5f19605029cd9c91 # The ID portion from your gist url
+                  lichessUsername: skravitz
