@@ -10,10 +10,10 @@ async function main()
     const stats = await axios.get(`https://lichess.org/api/user/${lichessUsername}`)
     const gistContent = 
     [
-        ['⭐', 'Bullet', stats.data.perfs.bullet.rating],
-        ['⭐', 'Blitz', stats.data.perfs.blitz.rating],
-        ['⭐', 'Rapid', stats.data.perfs.rapid.rating],
-        ['⭐', 'Classical', stats.data.perfs.classical.rating],
+        ['⏩', 'Bullet', stats.data.perfs.bullet.rating],
+        ['🔥', 'Blitz', stats.data.perfs.blitz.rating],
+        ['⏳', 'Rapid', stats.data.perfs.rapid.rating],
+        ['🐢', 'Classical', stats.data.perfs.classical.rating],
     ]
         .map((content) => {
             let line = `${content[1]}:${content[2]}`
@@ -38,7 +38,7 @@ async function main()
     return axios.patch(`https://api.github.com/gists/${gistId}`, {
         files: {
             [filename]: {
-                filename: `${lichessUsername}'s Lichess Stats`,
+                filename: `♟️ ${lichessUsername}'s Lichess Stats`,
                 description: 'lichess.org stats',
                 content: gistContent,
             },
