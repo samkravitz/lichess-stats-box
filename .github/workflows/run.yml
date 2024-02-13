@@ -11,7 +11,7 @@ jobs:
         steps:
             - uses: actions/setup-node@v1
               with:
-                  node-version: 12
+                  node-version: 20
             - run: npx lichess-stats-box
               env:
                   githubToken: ${{ secrets.githubToken }} # Do not edit, defined in secrets
